@@ -1,4 +1,4 @@
-
+import Image from 'next/image';
 import '../login/page.css'
 import React from 'react';
 
@@ -6,7 +6,7 @@ const Login = () => {
   return (
     <div className="container">
         <div className="login-image">
-        <img src="../login.png" alt="Illustration" />
+        <Image src="../login.png" alt="Illustration" />
       </div>
       <div className="login-form">
         <h2>Login</h2>
@@ -15,7 +15,7 @@ const Login = () => {
         <a href="#" className="forgot">Forgot Password</a>
         <button className="login-button">Login</button>
         <p>
-          Don't have account? <a href="/register">Register</a>
+          {"Don't have account?"} <a href="/register">Register</a>
         </p>
       </div>
       
