@@ -1,62 +1,81 @@
-'use client'
-import Image from 'next/image';
-import '../login/page.css';
-
+'use client';
 import React, { useState } from 'react';
 
-const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState({});
+interface LoginForm {
+  username: string;
+  password: string;
+}
 
-  const handleLogin = () => {
-    const validationErrors = {};
-    if (!username) {
+interface ValidationErrors {
+  username?: string;
+  password?: string;
+}
+
+const LoginPage = () => {
+  const [formData, setFormData] = useState<LoginForm>({
+    username: '',
+    password: '',
+  });
+
+  const [errors, setErrors] = useState<ValidationErrors>({});
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const validateForm = (): ValidationErrors => {
+    const validationErrors: ValidationErrors = {};
+    if (!formData.username) {
       validationErrors.username = 'Username is required';
     }
-    if (!password) {
+    if (!formData.password) {
       validationErrors.password = 'Password is required';
     }
+    return validationErrors;
+  };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
-      // Proceed with login logic
-      console.log('Logging in with', { username, password });
+      setErrors({});
+      console.log('Form submitted', formData);
     }
   };
 
   return (
-    <div className="container">
-      <div className="login-image">
-        <Image src="/login.png" alt="Illustration" width={500} height={500} className="image" />
-      </div>
-      <div className="login-form">
-        <h2>Login</h2>
-        <input
-          type="text"
-          placeholder="Username"
-          className="input-field"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        {errors.username && <span className="error" style={{ color: 'red' }}>{errors.username}</span>}
-        <input
-          type="password"
-          placeholder="Password"
-          className="input-field"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {errors.password && <span className="error" style={{ color: 'red' }}>{errors.password}</span>}
-        <a href="#" className="forgot">Forgot Password</a>
-        <button className="login-button" onClick={handleLogin}>Login</button>
-        <p>
-          {"Don't have an account?"} <a href="/register">Register</a>
-        </p>
-      </div>
+    <div>
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+          />
+          {errors.username && <span style={{ color: 'red' }}>{errors.username}</span>}
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          {errors.password && <span style={{ color: 'red' }}>{errors.password}</span>}
+        </div>
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
 };
 
-export default Login;
+export default LoginPage;
