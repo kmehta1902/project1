@@ -38,6 +38,7 @@
 .step {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -142,6 +143,8 @@ button:nth-child(2):hover {
     text-align: left;
     font-size: xx-large;
     font-weight: bolder;
+    text-decoration: underline;
+    text-decoration-color: #002244;
   }
   h3{
     font-size: larger;
@@ -152,6 +155,9 @@ button:nth-child(2):hover {
     font-size: 12px;
   }
   select,input{
-    width: 100%;
+    width: 130%;
+  }
+  .buttons{
+    justify-content: flex-end;
   }
 }

@@ -38,6 +38,7 @@
 .step {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -58,6 +59,7 @@ h2 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 30px;
+  
 }
 
 h3 {
@@ -65,6 +67,7 @@ h3 {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 20px;
+  transition: text-decoration 0.5s ease;
 }
 
 h4 {
@@ -127,6 +130,7 @@ button:nth-child(2) {
 button:nth-child(2):hover {
   background-color: #cbd5e1;
 }
+
 @media (max-width: 480px) {
   .white {
     display: none; 
@@ -141,7 +145,10 @@ button:nth-child(2):hover {
     text-align: left;
     font-size: xx-large;
     font-weight: bolder;
+    text-decoration: underline;
+    text-decoration-color: #002244;
   }
+  
   h3{
     font-size: larger;
   }
@@ -151,6 +158,12 @@ button:nth-child(2):hover {
     font-size: 12px;
   }
   select,input{
-    width: 100%;
+    width:130%;
+    
   }
+  .buttons{
+    justify-content: flex-end;
+  }
+ 
+  
 }
