@@ -57,7 +57,7 @@ const Login = () => {
         <a href="#" className="forgot">Forgot Password</a>
         <button className="login-button" onClick={handleLogin}>Login</button>
         <p>
-          {"Don't have an account?"} <a href="/register">Register</a>
+          {"Don't have an account?"} <a href="/register/user">Register</a>
         </p>
       </div>
     </div>
