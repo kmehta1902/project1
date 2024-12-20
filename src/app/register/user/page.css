@@ -129,20 +129,28 @@ button:nth-child(2):hover {
 }
 @media (max-width: 480px) {
   .white {
-    display: none; /* Hide the white section on very small screens */
+    display: none; 
   }
 
   .registerCard {
-    padding: 10px;
+    padding: 50px;
     width: 100%;
   }
 
   h2 {
-    font-size: medium;
+    text-align: left;
+    font-size: xx-large;
+    font-weight: bolder;
+  }
+  h3{
+    font-size: larger;
   }
 
   .button {
     width: 70px;
     font-size: 12px;
+  }
+  select,input{
+    width: 100%;
   }
 }

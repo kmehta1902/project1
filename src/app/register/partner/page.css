@@ -139,11 +139,19 @@ button:nth-child(2):hover {
   }
 
   h2 {
-    font-size: medium;
+    text-align: left;
+    font-size: xx-large;
+    font-weight: bolder;
+  }
+  h3{
+    font-size: larger;
   }
 
   .button {
     width: 70px;
     font-size: 12px;
+  }
+  select,input{
+    width: 100%;
   }
 }
